@@ -12,50 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, pageSize) {
-  // [START connection_list_connections_sample]
+function main(name) {
+  // [START connection_get_connection_sample]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Parent resource name.
-   *  Must be in the form: `projects/{project_id}/locations/{location_id}`
+   *  Required. Name of the requested connection, for example:
+   *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
    */
-  // const parent = 'abc123'
-  /**
-   *  Required. Page size.
-   */
-  // const pageSize = 1234
-  /**
-   *  Page token.
-   */
-  // const pageToken = 'abc123'
+  // const name = 'abc123'
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function listConnections() {
+  async function getConnection() {
     // Construct request
     const request = {
-      parent,
-      pageSize,
+      name,
     };
 
     // Run request
-    const iterable = await connectionClient.listConnectionsAsync(request);
-    for await (const response of iterable) {
-        console.log(response);
-    }
+    const response = await connectionClient.getConnection(request);
+    console.log(response);
   }
 
-  listConnections();
-  // [END connection_list_connections_sample]
+  getConnection();
+  // [END connection_get_connection_sample]
 }
 
 process.on('unhandledRejection', err => {

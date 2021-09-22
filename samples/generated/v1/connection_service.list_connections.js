@@ -12,49 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name, connection, updateMask) {
-  // [START connection_update_connection_sample]
+function main(parent, pageSize) {
+  // [START connection_list_connections_sample]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of the connection to update, for example:
-   *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+   *  Required. Parent resource name.
+   *  Must be in the form: `projects/{project_id}/locations/{location_id}`
    */
-  // const name = 'abc123'
+  // const parent = 'abc123'
   /**
-   *  Required. Connection containing the updated fields.
+   *  Required. Page size.
    */
-  // const connection = ''
+  // const pageSize = 1234
   /**
-   *  Required. Update mask for the connection fields to be updated.
+   *  Page token.
    */
-  // const updateMask = ''
+  // const pageToken = 'abc123'
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function updateConnection() {
+  async function listConnections() {
     // Construct request
     const request = {
-      name,
-      connection,
-      updateMask,
+      parent,
+      pageSize,
     };
 
     // Run request
-    const response = await connectionClient.updateConnection(request);
-    console.log(response);
+    const iterable = await connectionClient.listConnectionsAsync(request);
+    for await (const response of iterable) {
+      console.log(response);
+    }
   }
 
-  updateConnection();
-  // [END connection_update_connection_sample]
+  listConnections();
+  // [END connection_list_connections_sample]
 }
 
 process.on('unhandledRejection', err => {
