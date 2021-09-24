@@ -12,49 +12,47 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name, connection, updateMask) {
-  // [START connection_v1_generated_ConnectionService_UpdateConnection_async]
+function main(resource, policy) {
+  // [START connection_v1_generated_ConnectionService_SetIamPolicy_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of the connection to update, for example:
-   *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+   *  REQUIRED: The resource for which the policy is being specified.
+   *  See the operation documentation for the appropriate value for this field.
    */
-  // const name = 'abc123'
+  // const resource = 'abc123'
   /**
-   *  Required. Connection containing the updated fields.
+   *  REQUIRED: The complete policy to be applied to the `resource`. The size of
+   *  the policy is limited to a few 10s of KB. An empty policy is a
+   *  valid policy but certain Cloud Platform services (such as Projects)
+   *  might reject them.
    */
-  // const connection = ''
-  /**
-   *  Required. Update mask for the connection fields to be updated.
-   */
-  // const updateMask = ''
+  // const policy = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function updateConnection() {
+  async function setIamPolicy() {
     // Construct request
     const request = {
-      name,
-      connection,
-      updateMask,
+      resource,
+      policy,
     };
 
     // Run request
-    const response = await connectionClient.updateConnection(request);
+    const response = await connectionClient.setIamPolicy(request);
     console.log(response);
   }
 
-  updateConnection();
-  // [END connection_v1_generated_ConnectionService_UpdateConnection_async]
+  setIamPolicy();
+  // [END connection_v1_generated_ConnectionService_SetIamPolicy_async]
 }
 
 process.on('unhandledRejection', err => {

@@ -12,44 +12,48 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(resource) {
-  // [START connection_v1_generated_ConnectionService_GetIamPolicy_async]
+function main(parent, connection) {
+  // [START connection_v1_generated_ConnectionService_CreateConnection_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  REQUIRED: The resource for which the policy is being requested.
-   *  See the operation documentation for the appropriate value for this field.
+   *  Required. Parent resource name.
+   *  Must be in the format `projects/{project_id}/locations/{location_id}`
    */
-  // const resource = 'abc123'
+  // const parent = 'abc123'
   /**
-   *  OPTIONAL: A `GetPolicyOptions` object for specifying options to
-   *  `GetIamPolicy`. This field is only used by Cloud IAM.
+   *  Optional. Connection id that should be assigned to the created connection.
    */
-  // const options = ''
+  // const connectionId = 'abc123'
+  /**
+   *  Required. Connection to create.
+   */
+  // const connection = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function getIamPolicy() {
+  async function createConnection() {
     // Construct request
     const request = {
-      resource,
+      parent,
+      connection,
     };
 
     // Run request
-    const response = await connectionClient.getIamPolicy(request);
+    const response = await connectionClient.createConnection(request);
     console.log(response);
   }
 
-  getIamPolicy();
-  // [END connection_v1_generated_ConnectionService_GetIamPolicy_async]
+  createConnection();
+  // [END connection_v1_generated_ConnectionService_CreateConnection_async]
 }
 
 process.on('unhandledRejection', err => {

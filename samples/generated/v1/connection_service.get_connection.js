@@ -12,47 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(resource, permissions) {
-  // [START connection_v1_generated_ConnectionService_TestIamPermissions_async]
+function main(name) {
+  // [START connection_v1_generated_ConnectionService_GetConnection_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  REQUIRED: The resource for which the policy detail is being requested.
-   *  See the operation documentation for the appropriate value for this field.
+   *  Required. Name of the requested connection, for example:
+   *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
    */
-  // const resource = 'abc123'
-  /**
-   *  The set of permissions to check for the `resource`. Permissions with
-   *  wildcards (such as '*' or 'storage.*') are not allowed. For more
-   *  information see
-   *  [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-   */
-  // const permissions = 'abc123'
+  // const name = 'abc123'
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function testIamPermissions() {
+  async function getConnection() {
     // Construct request
     const request = {
-      resource,
-      permissions,
+      name,
     };
 
     // Run request
-    const response = await connectionClient.testIamPermissions(request);
+    const response = await connectionClient.getConnection(request);
     console.log(response);
   }
 
-  testIamPermissions();
-  // [END connection_v1_generated_ConnectionService_TestIamPermissions_async]
+  getConnection();
+  // [END connection_v1_generated_ConnectionService_GetConnection_async]
 }
 
 process.on('unhandledRejection', err => {

@@ -12,39 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name) {
-  // [START connection_v1_generated_ConnectionService_DeleteConnection_async]
+function main(name, connection, updateMask) {
+  // [START connection_v1_generated_ConnectionService_UpdateConnection_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of the deleted connection, for example:
+   *  Required. Name of the connection to update, for example:
    *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
    */
   // const name = 'abc123'
+  /**
+   *  Required. Connection containing the updated fields.
+   */
+  // const connection = ''
+  /**
+   *  Required. Update mask for the connection fields to be updated.
+   */
+  // const updateMask = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function deleteConnection() {
+  async function updateConnection() {
     // Construct request
     const request = {
       name,
+      connection,
+      updateMask,
     };
 
     // Run request
-    const response = await connectionClient.deleteConnection(request);
+    const response = await connectionClient.updateConnection(request);
     console.log(response);
   }
 
-  deleteConnection();
-  // [END connection_v1_generated_ConnectionService_DeleteConnection_async]
+  updateConnection();
+  // [END connection_v1_generated_ConnectionService_UpdateConnection_async]
 }
 
 process.on('unhandledRejection', err => {

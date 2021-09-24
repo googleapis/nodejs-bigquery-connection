@@ -12,48 +12,47 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, connection) {
-  // [START connection_v1_generated_ConnectionService_CreateConnection_async]
+function main(resource, permissions) {
+  // [START connection_v1_generated_ConnectionService_TestIamPermissions_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Parent resource name.
-   *  Must be in the format `projects/{project_id}/locations/{location_id}`
+   *  REQUIRED: The resource for which the policy detail is being requested.
+   *  See the operation documentation for the appropriate value for this field.
    */
-  // const parent = 'abc123'
+  // const resource = 'abc123'
   /**
-   *  Optional. Connection id that should be assigned to the created connection.
+   *  The set of permissions to check for the `resource`. Permissions with
+   *  wildcards (such as '*' or 'storage.*') are not allowed. For more
+   *  information see
+   *  [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
    */
-  // const connectionId = 'abc123'
-  /**
-   *  Required. Connection to create.
-   */
-  // const connection = ''
+  // const permissions = 'abc123'
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function createConnection() {
+  async function testIamPermissions() {
     // Construct request
     const request = {
-      parent,
-      connection,
+      resource,
+      permissions,
     };
 
     // Run request
-    const response = await connectionClient.createConnection(request);
+    const response = await connectionClient.testIamPermissions(request);
     console.log(response);
   }
 
-  createConnection();
-  // [END connection_v1_generated_ConnectionService_CreateConnection_async]
+  testIamPermissions();
+  // [END connection_v1_generated_ConnectionService_TestIamPermissions_async]
 }
 
 process.on('unhandledRejection', err => {
