@@ -12,50 +12,48 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, pageSize) {
-  // [START bigqueryconnection_v1_generated_ConnectionService_ListConnections_async]
+function main(parent, connection) {
+  // [START bigqueryconnection_v1_generated_ConnectionService_CreateConnection_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
    *  Required. Parent resource name.
-   *  Must be in the form: `projects/{project_id}/locations/{location_id}`
+   *  Must be in the format `projects/{project_id}/locations/{location_id}`
    */
   // const parent = 'abc123'
   /**
-   *  Required. Page size.
+   *  Optional. Connection id that should be assigned to the created connection.
    */
-  // const pageSize = 1234
+  // const connectionId = 'abc123'
   /**
-   *  Page token.
+   *  Required. Connection to create.
    */
-  // const pageToken = 'abc123'
+  // const connection = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function listConnections() {
+  async function createConnection() {
     // Construct request
     const request = {
       parent,
-      pageSize,
+      connection,
     };
 
     // Run request
-    const iterable = await connectionClient.listConnectionsAsync(request);
-    for await (const response of iterable) {
-        console.log(response);
-    }
+    const response = await connectionClient.createConnection(request);
+    console.log(response);
   }
 
-  listConnections();
-  // [END bigqueryconnection_v1_generated_ConnectionService_ListConnections_async]
+  createConnection();
+  // [END bigqueryconnection_v1_generated_ConnectionService_CreateConnection_async]
 }
 
 process.on('unhandledRejection', err => {

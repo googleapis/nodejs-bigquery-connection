@@ -12,48 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, connection) {
-  // [START bigqueryconnection_v1_generated_ConnectionService_CreateConnection_async]
+function main(parent, pageSize) {
+  // [START bigqueryconnection_v1_generated_ConnectionService_ListConnections_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
    *  Required. Parent resource name.
-   *  Must be in the format `projects/{project_id}/locations/{location_id}`
+   *  Must be in the form: `projects/{project_id}/locations/{location_id}`
    */
   // const parent = 'abc123'
   /**
-   *  Optional. Connection id that should be assigned to the created connection.
+   *  Required. Page size.
    */
-  // const connectionId = 'abc123'
+  // const pageSize = 1234
   /**
-   *  Required. Connection to create.
+   *  Page token.
    */
-  // const connection = ''
+  // const pageToken = 'abc123'
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function createConnection() {
+  async function listConnections() {
     // Construct request
     const request = {
       parent,
-      connection,
+      pageSize,
     };
 
     // Run request
-    const response = await connectionClient.createConnection(request);
-    console.log(response);
+    const iterable = await connectionClient.listConnectionsAsync(request);
+    for await (const response of iterable) {
+      console.log(response);
+    }
   }
 
-  createConnection();
-  // [END bigqueryconnection_v1_generated_ConnectionService_CreateConnection_async]
+  listConnections();
+  // [END bigqueryconnection_v1_generated_ConnectionService_ListConnections_async]
 }
 
 process.on('unhandledRejection', err => {

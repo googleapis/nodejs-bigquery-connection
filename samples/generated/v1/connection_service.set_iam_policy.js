@@ -12,39 +12,47 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name) {
-  // [START bigqueryconnection_v1_generated_ConnectionService_DeleteConnection_async]
+function main(resource, policy) {
+  // [START bigqueryconnection_v1_generated_ConnectionService_SetIamPolicy_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of the deleted connection, for example:
-   *  `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+   *  REQUIRED: The resource for which the policy is being specified.
+   *  See the operation documentation for the appropriate value for this field.
    */
-  // const name = 'abc123'
+  // const resource = 'abc123'
+  /**
+   *  REQUIRED: The complete policy to be applied to the `resource`. The size of
+   *  the policy is limited to a few 10s of KB. An empty policy is a
+   *  valid policy but certain Cloud Platform services (such as Projects)
+   *  might reject them.
+   */
+  // const policy = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function deleteConnection() {
+  async function setIamPolicy() {
     // Construct request
     const request = {
-      name,
+      resource,
+      policy,
     };
 
     // Run request
-    const response = await connectionClient.deleteConnection(request);
+    const response = await connectionClient.setIamPolicy(request);
     console.log(response);
   }
 
-  deleteConnection();
-  // [END bigqueryconnection_v1_generated_ConnectionService_DeleteConnection_async]
+  setIamPolicy();
+  // [END bigqueryconnection_v1_generated_ConnectionService_SetIamPolicy_async]
 }
 
 process.on('unhandledRejection', err => {

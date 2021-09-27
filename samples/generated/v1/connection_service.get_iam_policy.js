@@ -12,47 +12,44 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(resource, permissions) {
-  // [START bigqueryconnection_v1_generated_ConnectionService_TestIamPermissions_async]
+function main(resource) {
+  // [START bigqueryconnection_v1_generated_ConnectionService_GetIamPolicy_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  REQUIRED: The resource for which the policy detail is being requested.
+   *  REQUIRED: The resource for which the policy is being requested.
    *  See the operation documentation for the appropriate value for this field.
    */
   // const resource = 'abc123'
   /**
-   *  The set of permissions to check for the `resource`. Permissions with
-   *  wildcards (such as '*' or 'storage.*') are not allowed. For more
-   *  information see
-   *  [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+   *  OPTIONAL: A `GetPolicyOptions` object for specifying options to
+   *  `GetIamPolicy`. This field is only used by Cloud IAM.
    */
-  // const permissions = 'abc123'
+  // const options = ''
 
   // Imports the Connection library
-  const {ConnectionServiceClient} = require('@google-cloud/bigquery-connection').v1;
+  const {ConnectionServiceClient} =
+    require('@google-cloud/bigquery-connection').v1;
 
   // Instantiates a client
   const connectionClient = new ConnectionServiceClient();
 
-  async function testIamPermissions() {
+  async function getIamPolicy() {
     // Construct request
     const request = {
       resource,
-      permissions,
     };
 
     // Run request
-    const response = await connectionClient.testIamPermissions(request);
+    const response = await connectionClient.getIamPolicy(request);
     console.log(response);
   }
 
-  testIamPermissions();
-  // [END bigqueryconnection_v1_generated_ConnectionService_TestIamPermissions_async]
+  getIamPolicy();
+  // [END bigqueryconnection_v1_generated_ConnectionService_GetIamPolicy_async]
 }
 
 process.on('unhandledRejection', err => {
