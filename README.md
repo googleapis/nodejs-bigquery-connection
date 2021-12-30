@@ -6,7 +6,6 @@
 
 
 [![npm version](https://img.shields.io/npm/v/@google-cloud/bigquery-connection.svg)](https://www.npmjs.org/package/@google-cloud/bigquery-connection)
-[![codecov](https://img.shields.io/codecov/c/github/googleapis/nodejs-bigquery-connection/main.svg?style=flat)](https://codecov.io/gh/googleapis/nodejs-bigquery-connection)
 
 
 
