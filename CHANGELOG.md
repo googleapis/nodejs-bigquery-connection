@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/googleapis/nodejs-bigquery-connection/compare/v1.5.1...v1.6.0) (2022-05-09)
+
+
+### Features
+
+* Add Cloud_Resource Connection Support ([#162](https://github.com/googleapis/nodejs-bigquery-connection/issues/162)) ([afc2727](https://github.com/googleapis/nodejs-bigquery-connection/commit/afc272726d3600f425faca2a8b5bf22a6a24314c))
+* AuditConfig for IAM v1 ([#166](https://github.com/googleapis/nodejs-bigquery-connection/issues/166)) ([53bec44](https://github.com/googleapis/nodejs-bigquery-connection/commit/53bec4434eaec4ffba927554f8cee14b45a3c646))
+
 ### [1.5.1](https://www.github.com/googleapis/nodejs-bigquery-connection/compare/v1.5.0...v1.5.1) (2021-09-27)
 
 
