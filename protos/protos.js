@@ -2175,6 +2175,7 @@
                              * @property {string|null} [database] CloudSqlProperties database
                              * @property {google.cloud.bigquery.connection.v1.CloudSqlProperties.DatabaseType|null} [type] CloudSqlProperties type
                              * @property {google.cloud.bigquery.connection.v1.ICloudSqlCredential|null} [credential] CloudSqlProperties credential
+                             * @property {string|null} [serviceAccountId] CloudSqlProperties serviceAccountId
                              */
     
                             /**
@@ -2225,6 +2226,14 @@
                             CloudSqlProperties.prototype.credential = null;
     
                             /**
+                             * CloudSqlProperties serviceAccountId.
+                             * @member {string} serviceAccountId
+                             * @memberof google.cloud.bigquery.connection.v1.CloudSqlProperties
+                             * @instance
+                             */
+                            CloudSqlProperties.prototype.serviceAccountId = "";
+    
+                            /**
                              * Creates a new CloudSqlProperties instance using the specified properties.
                              * @function create
                              * @memberof google.cloud.bigquery.connection.v1.CloudSqlProperties
@@ -2256,6 +2265,8 @@
                                     writer.uint32(/* id 3, wireType 0 =*/24).int32(message.type);
                                 if (message.credential != null && Object.hasOwnProperty.call(message, "credential"))
                                     $root.google.cloud.bigquery.connection.v1.CloudSqlCredential.encode(message.credential, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                                if (message.serviceAccountId != null && Object.hasOwnProperty.call(message, "serviceAccountId"))
+                                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.serviceAccountId);
                                 return writer;
                             };
     
@@ -2301,6 +2312,9 @@
                                         break;
                                     case 4:
                                         message.credential = $root.google.cloud.bigquery.connection.v1.CloudSqlCredential.decode(reader, reader.uint32());
+                                        break;
+                                    case 5:
+                                        message.serviceAccountId = reader.string();
                                         break;
                                     default:
                                         reader.skipType(tag & 7);
@@ -2357,6 +2371,9 @@
                                     if (error)
                                         return "credential." + error;
                                 }
+                                if (message.serviceAccountId != null && message.hasOwnProperty("serviceAccountId"))
+                                    if (!$util.isString(message.serviceAccountId))
+                                        return "serviceAccountId: string expected";
                                 return null;
                             };
     
@@ -2395,6 +2412,8 @@
                                         throw TypeError(".google.cloud.bigquery.connection.v1.CloudSqlProperties.credential: object expected");
                                     message.credential = $root.google.cloud.bigquery.connection.v1.CloudSqlCredential.fromObject(object.credential);
                                 }
+                                if (object.serviceAccountId != null)
+                                    message.serviceAccountId = String(object.serviceAccountId);
                                 return message;
                             };
     
@@ -2416,6 +2435,7 @@
                                     object.database = "";
                                     object.type = options.enums === String ? "DATABASE_TYPE_UNSPECIFIED" : 0;
                                     object.credential = null;
+                                    object.serviceAccountId = "";
                                 }
                                 if (message.instanceId != null && message.hasOwnProperty("instanceId"))
                                     object.instanceId = message.instanceId;
@@ -2425,6 +2445,8 @@
                                     object.type = options.enums === String ? $root.google.cloud.bigquery.connection.v1.CloudSqlProperties.DatabaseType[message.type] : message.type;
                                 if (message.credential != null && message.hasOwnProperty("credential"))
                                     object.credential = $root.google.cloud.bigquery.connection.v1.CloudSqlCredential.toObject(message.credential, options);
+                                if (message.serviceAccountId != null && message.hasOwnProperty("serviceAccountId"))
+                                    object.serviceAccountId = message.serviceAccountId;
                                 return object;
                             };
     

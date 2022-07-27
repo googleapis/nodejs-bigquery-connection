@@ -964,6 +964,9 @@ export namespace google {
 
                         /** CloudSqlProperties credential */
                         credential?: (google.cloud.bigquery.connection.v1.ICloudSqlCredential|null);
+
+                        /** CloudSqlProperties serviceAccountId */
+                        serviceAccountId?: (string|null);
                     }
 
                     /** Represents a CloudSqlProperties. */
@@ -986,6 +989,9 @@ export namespace google {
 
                         /** CloudSqlProperties credential. */
                         public credential?: (google.cloud.bigquery.connection.v1.ICloudSqlCredential|null);
+
+                        /** CloudSqlProperties serviceAccountId. */
+                        public serviceAccountId: string;
 
                         /**
                          * Creates a new CloudSqlProperties instance using the specified properties.
