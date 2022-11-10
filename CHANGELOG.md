@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.3](https://github.com/googleapis/nodejs-bigquery-connection/compare/v2.0.2...v2.0.3) (2022-11-10)
+
+
+### Bug Fixes
+
+* **deps:** Use google-gax v3.5.2 ([#200](https://github.com/googleapis/nodejs-bigquery-connection/issues/200)) ([c5fcac5](https://github.com/googleapis/nodejs-bigquery-connection/commit/c5fcac562357fdd4fc99852bd8ac6b6c657a1c5f))
+* Preserve default values in x-goog-request-params header ([#193](https://github.com/googleapis/nodejs-bigquery-connection/issues/193)) ([e706008](https://github.com/googleapis/nodejs-bigquery-connection/commit/e706008b4b8eb13a024733eec12d43ed6be2af6b))
+* Regenerated protos JS and TS definitions ([#203](https://github.com/googleapis/nodejs-bigquery-connection/issues/203)) ([54bb784](https://github.com/googleapis/nodejs-bigquery-connection/commit/54bb784eb159f4fa2d64e4d1fd0ae587124c7322))
+
 ## [2.0.2](https://github.com/googleapis/nodejs-bigquery-connection/compare/v2.0.1...v2.0.2) (2022-09-01)
 
 
